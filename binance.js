@@ -1,13 +1,11 @@
 const request = require('request');
 const URL_BASE = 'https://api.binance.com';
 
-const path = '/api/v3/ticker/price?symbol=BTCUSDT';
-
-const full_url = URL_BASE + path;
-
-function getBTCPrice() {
+const getPriceOf = (symbol) => {
+    const path = `/api/v3/ticker/price?symbol=${symbol}`;
+    const fullUri = URL_BASE + path;
     return new Promise((resolve, reject) => {
-        request.get(full_url, function (err, response, json) {
+        request.get(fullUri, (err, response, json) => {
             if (err) {
                 return reject(err);
             }
@@ -18,4 +16,4 @@ function getBTCPrice() {
     });
 }
 
-module.exports = { getBTCPrice }
+module.exports = { getPriceOf }
