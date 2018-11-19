@@ -1,0 +1,21 @@
+{
+  "name": "arbitrer-bot",
+  "version": "1.0.0",
+  "description": "Initial spike of an arbitrer bot",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "traiding",
+    "crypto",
+    "arbitrage"
+  ],
+  "author": "Wilfredo Alcala",
+  "license": "ISC"
+}
