@@ -1,0 +1,25 @@
+service: aws # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  statge: dev
+  region: us-east-2
+
+plugins:
+  - serverless-offline
+
+functions:
+  binance:
+    handler: binance.handler
+    events:
+      - http:
+          path: /binance-price
+          method: get 
+
+  localbitcoins:
+    handler: lbtc.handler
+    events: 
+      - http: 
+          path: local-price
+          method: get 

@@ -10,10 +10,24 @@ const getPriceOf = (symbol) => {
                 return reject(err);
             }
             let data = JSON.parse(json);
-            const priceBtc = parseFloat(data.price).toFixed(2);
-            resolve(priceBtc);
+            const priceBtc = parseFloat(data.price);
+            resolve(priceBtc);  
         });
     });
 }
 
-module.exports = { getPriceOf }
+const handler = async (event, context) => {
+    const params = event.queryStringParameters
+    const symbol = params.symbol.toUpperCase();
+    const price = await getPriceOf(symbol);
+    return {
+        statusCode: 200,
+        body: JSON.stringify({
+            message: 'Successful',
+            params,
+            price
+        })
+    }
+}
+
+module.exports = { handler }
